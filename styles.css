@@ -1,0 +1,210 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Orbitron', sans-serif; /* Space-y font */
+    color: #fff; /* White text for the space theme */
+}
+
+body {
+    background: #0b0d19; /* Dark space-like background */
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+a {
+    color: #00ffdd;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #ff007a;
+}
+
+/* Space Background */
+.space-background {
+    background: url('space-background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Header Section */
+.header {
+    text-align: center;
+    padding: 20px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    font-size: 3rem;
+    color: #00ffdd; /* Neon effect */
+    text-shadow: 0px 0px 10px #00ffdd;
+}
+
+.header p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.header nav ul {
+    list-style: none;
+    margin-top: 20px;
+}
+
+.header nav ul li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+.header nav ul li a {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+/* Section Styling */
+.section {
+    padding: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent sections */
+    border-radius: 10px;
+    margin-bottom: 40px;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+}
+
+.section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #ff007a;
+    text-shadow: 0px 0px 5px #ff007a;
+}
+
+.section p, .section ul li {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* Job Experience Section */
+.job {
+    margin-bottom: 30px;
+}
+
+.job h3 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: #00ffdd;
+    text-shadow: 0px 0px 10px #00ffdd;
+}
+
+.job p {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Contact Section */
+#contact p {
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#contact a {
+    color: #ff007a;
+    font-weight: bold;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 50px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Animation Effects */
+.section {
+    animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.header h1 {
+    animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 5px #00ffdd, 0 0 10px #00ffdd, 0 0 15px #00ffdd;
+    }
+    to {
+        text-shadow: 0 0 20px #00ffdd, 0 0 30px #00ffdd, 0 0 40px #00ffdd;
+    }
+}
+
+/* Easter Egg Style */
+.hidden-easter-egg {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ff007a;
+    font-size: 2rem;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    text-shadow: 0px 0px 10px #ff007a;
+}
+
+.hidden-easter-egg.active {
+    display: block;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Star styling for random generation */
+.star {
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    opacity: 0.7;
+    animation: twinkle 5s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0.2;
+    }
+    50% {
+        opacity: 1;
+    }
+}
