@@ -1,52 +1,71 @@
+/* Import Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Lato:wght@400;700&display=swap');
+
 /* Global Styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Orbitron', sans-serif; /* Space-y font */
-    color: #fff; /* White text for the space theme */
+    font-family: 'Lato', sans-serif; /* Professional and casual font */
+    color: #ffffff;
 }
 
 body {
-    background: #0b0d19; /* Dark space-like background */
+    background-color: #0a0a0a; /* Dark background for space theme */
     overflow-x: hidden;
-    scroll-behavior: smooth;
+    position: relative;
+    min-height: 100vh;
 }
 
-a {
-    color: #00ffdd;
-    text-decoration: none;
-}
-
-a:hover {
-    color: #ff007a;
+/* Cyberpunk Color Palette */
+:root {
+    --neon-pink: #ff00ff;
+    --neon-cyan: #00ffff;
+    --dark-bg: #0a0a0a;
+    --semi-transparent: rgba(255, 255, 255, 0.1);
+    --highlight: #ff007a;
+    --text-color: #ffffff;
 }
 
 /* Space Background */
 .space-background {
-    background: url('space-background.jpg') no-repeat center center fixed;
-    background-size: cover;
+    position: relative;
+    width: 100%;
     min-height: 100vh;
-    padding: 20px;
+    background: #0a0a0a; /* Solid dark background */
+    overflow: hidden;
+}
+
+/* Canvas for dynamic space elements */
+canvas#space-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
 }
 
 /* Header Section */
 .header {
     text-align: center;
-    padding: 20px;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-    margin-bottom: 30px;
+    padding: 40px 20px;
+    position: relative;
+    z-index: 1;
 }
 
 .header h1 {
-    font-size: 3rem;
-    color: #00ffdd; /* Neon effect */
-    text-shadow: 0px 0px 10px #00ffdd;
+    font-family: 'Montserrat', sans-serif; /* Professional font */
+    font-size: 3.5rem;
+    color: var(--neon-cyan);
+    text-shadow: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan), 0 0 30px var(--neon-cyan);
+    animation: glow 2s infinite alternate;
 }
 
 .header p {
     font-size: 1.2rem;
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 10px;
 }
 
 .header nav ul {
@@ -61,34 +80,130 @@ a:hover {
 
 .header nav ul li a {
     font-size: 1.1rem;
-    font-weight: bold;
+    font-weight: 700;
+    color: var(--neon-pink);
+    position: relative;
+    transition: color 0.3s;
+}
+
+.header nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: var(--neon-pink);
+    left: 0;
+    bottom: -5px;
+    transition: width 0.3s;
+}
+
+.header nav ul li a:hover {
+    color: var(--highlight);
+}
+
+.header nav ul li a:hover::after {
+    width: 100%;
+}
+
+.buttons {
+    margin-top: 30px;
+}
+
+.buttons button {
+    background-color: var(--semi-transparent);
+    border: 2px solid var(--neon-pink);
+    color: var(--neon-pink);
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+.buttons button:hover {
+    background-color: var(--neon-pink);
+    color: #000;
+    transform: scale(1.05);
+}
+
+/* Audio Player Section */
+.audio-player {
+    margin-top: 20px;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent dark background */
+    padding: 10px;
+    border-radius: 5px;
+    display: inline-block; /* Ensures the container wraps tightly around the content */
+}
+
+.audio-player p {
+    font-size: 1rem;
+    color: var(--neon-pink);
+    margin-bottom: 10px;
+}
+
+.audio-player audio {
+    width: 100%;
+    max-width: 300px;
+    outline: none;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.8); /* Darker background for the audio element */
+    filter: brightness(0.9) contrast(1.1); /* Adjusts brightness and contrast for better visibility */
 }
 
 /* Section Styling */
 .section {
-    padding: 40px;
+    padding: 60px 20px;
     max-width: 1000px;
     margin: 0 auto;
-    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent sections */
+    background-color: rgba(20, 20, 20, 0.7); /* Semi-transparent sections */
     border-radius: 10px;
     margin-bottom: 40px;
-    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+    box-shadow: 0px 0px 20px rgba(0, 255, 221, 0.2);
+    position: relative;
+    z-index: 1;
+    backdrop-filter: blur(10px);
 }
 
 .section h2 {
+    font-family: 'Montserrat', sans-serif;
     font-size: 2.5rem;
     margin-bottom: 20px;
     text-align: center;
     text-transform: uppercase;
-    color: #ff007a;
-    text-shadow: 0px 0px 5px #ff007a;
+    color: var(--neon-pink);
+    text-shadow: 0px 0px 5px var(--neon-pink);
+    position: relative;
+}
+
+.section h2::before, .section h2::after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 2px;
+    background: var(--neon-pink);
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.section h2::before {
+    left: -60px;
+}
+
+.section h2::after {
+    right: -60px;
 }
 
 .section p, .section ul li {
     font-size: 1.1rem;
-    margin-bottom: 10px;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 15px;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.section ul {
+    list-style: disc inside;
 }
 
 /* Job Experience Section */
@@ -97,16 +212,21 @@ a:hover {
 }
 
 .job h3 {
+    font-family: 'Montserrat', sans-serif;
     font-size: 1.8rem;
     margin-bottom: 10px;
-    color: #00ffdd;
-    text-shadow: 0px 0px 10px #00ffdd;
+    color: var(--neon-cyan);
+    text-shadow: 0px 0px 10px var(--neon-cyan);
 }
 
 .job p {
     font-size: 1rem;
     margin-bottom: 5px;
     color: rgba(255, 255, 255, 0.7);
+}
+
+.job ul li {
+    color: rgba(255, 255, 255, 0.85);
 }
 
 /* Contact Section */
@@ -117,8 +237,13 @@ a:hover {
 }
 
 #contact a {
-    color: #ff007a;
+    color: var(--neon-pink);
     font-weight: bold;
+    transition: color 0.3s;
+}
+
+#contact a:hover {
+    color: var(--highlight);
 }
 
 /* Footer */
@@ -128,6 +253,8 @@ footer {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     margin-top: 50px;
     color: rgba(255, 255, 255, 0.5);
+    position: relative;
+    z-index: 1;
 }
 
 /* Animation Effects */
@@ -152,59 +279,75 @@ footer {
 
 @keyframes glow {
     from {
-        text-shadow: 0 0 5px #00ffdd, 0 0 10px #00ffdd, 0 0 15px #00ffdd;
+        text-shadow: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan), 0 0 30px var(--neon-cyan);
     }
     to {
-        text-shadow: 0 0 20px #00ffdd, 0 0 30px #00ffdd, 0 0 40px #00ffdd;
+        text-shadow: 0 0 20px var(--neon-cyan), 0 0 30px var(--neon-cyan), 0 0 40px var(--neon-cyan);
     }
 }
 
 /* Easter Egg Style */
 .hidden-easter-egg {
     display: none;
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: #ff007a;
+    color: var(--neon-pink);
     font-size: 2rem;
-    background: rgba(0, 0, 0, 0.8);
-    padding: 20px;
-    border-radius: 10px;
-    text-shadow: 0px 0px 10px #ff007a;
+    background: rgba(0, 0, 0, 0.85);
+    padding: 30px;
+    border: 2px solid var(--neon-pink);
+    border-radius: 15px;
+    text-align: center;
+    z-index: 1000;
+    animation: slideIn 1s forwards;
 }
 
 .hidden-easter-egg.active {
     display: block;
-    animation: pulse 2s infinite;
 }
 
-@keyframes pulse {
-    0% {
-        transform: scale(1);
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -60%);
     }
-    50% {
-        transform: scale(1.05);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
-
-/* Star styling for random generation */
-.star {
-    position: absolute;
-    background-color: white;
-    border-radius: 50%;
-    opacity: 0.7;
-    animation: twinkle 5s ease-in-out infinite;
-}
-
-@keyframes twinkle {
-    0%, 100% {
-        opacity: 0.2;
-    }
-    50% {
+    to {
         opacity: 1;
+        transform: translate(-50%, -50%);
     }
+}
+
+.easter-egg-image {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+/* Buttons for Translation and Alien Language */
+button#translate-btn, button#alien-btn {
+    background-color: transparent;
+    border: 2px solid var(--neon-pink);
+    color: var(--neon-pink);
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+button#translate-btn:hover, button#alien-btn:hover {
+    background-color: var(--neon-pink);
+    color: #000;
+    transform: scale(1.05);
+}
+
+/* Alien Language Toggle */
+.alien-text {
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 2px;
 }
