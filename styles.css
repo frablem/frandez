@@ -1,408 +1,353 @@
-// Smooth Scrolling for Navigation Links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
-});
+/* Import Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Lato:wght@400;700&display=swap');
 
-// Translation Toggle
-const translateBtn = document.getElementById('translate-btn');
-let isTranslated = false;
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif; /* Professional and casual font */
+    color: #ffffff;
+}
 
-// Function to toggle between English and Spanish
-translateBtn.addEventListener('click', () => {
-    const elements = document.querySelectorAll('[data-spanish]');
-    if (!isTranslated) {
-        elements.forEach(el => {
-            // Store original English text if not already stored
-            if (!el.dataset.original) {
-                el.dataset.original = el.textContent;
-            }
-            // Replace English text with Spanish translation
-            el.textContent = el.dataset.spanish;
-        });
-        translateBtn.textContent = 'Translate to English';
-    } else {
-        elements.forEach(el => {
-            // Restore original English text
-            if (el.dataset.original) {
-                el.textContent = el.dataset.original;
-            }
-            // Note: We do NOT delete the data-original attribute here
-        });
-        translateBtn.textContent = 'Translate to Spanish';
+body {
+    background-color: #0a0a0a; /* Dark background for space theme */
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* Cyberpunk Color Palette */
+:root {
+    --neon-pink: #ff00ff;
+    --neon-cyan: #00ffff;
+    --dark-bg: #0a0a0a;
+    --semi-transparent: rgba(255, 255, 255, 0.1);
+    --highlight: #ff007a;
+    --text-color: #ffffff;
+}
+
+/* Space Background */
+.space-background {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background: #0a0a0a; /* Solid dark background */
+    overflow: hidden;
+}
+
+/* Canvas for dynamic space elements */
+canvas#space-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+/* Header Section */
+.header {
+    text-align: center;
+    padding: 40px 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.header h1 {
+    font-family: 'Montserrat', sans-serif; /* Professional font */
+    font-size: 3.5rem;
+    color: var(--neon-cyan);
+    text-shadow: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan), 0 0 30px var(--neon-cyan);
+    animation: glow 2s infinite alternate;
+}
+
+.header p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 10px;
+}
+
+.header nav ul {
+    list-style: none;
+    margin-top: 20px;
+}
+
+.header nav ul li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+.header nav ul li a {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--neon-pink);
+    position: relative;
+    transition: color 0.3s;
+}
+
+.header nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: var(--neon-pink);
+    left: 0;
+    bottom: -5px;
+    transition: width 0.3s;
+}
+
+.header nav ul li a:hover {
+    color: var(--highlight);
+}
+
+.header nav ul li a:hover::after {
+    width: 100%;
+}
+
+.buttons {
+    margin-top: 30px;
+}
+
+.buttons button {
+    background-color: var(--semi-transparent);
+    border: 2px solid var(--neon-pink);
+    color: var(--neon-pink);
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+.buttons button:hover {
+    background-color: var(--neon-pink);
+    color: #000;
+    transform: scale(1.05);
+}
+
+/* Audio Player Section */
+.audio-player {
+    margin-top: 20px;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent dark background */
+    padding: 10px;
+    border-radius: 5px;
+    display: inline-block; /* Ensures the container wraps tightly around the content */
+}
+
+.audio-player p {
+    font-size: 1rem;
+    color: var(--neon-pink);
+    margin-bottom: 10px;
+}
+
+.audio-player audio {
+    width: 100%;
+    max-width: 300px;
+    outline: none;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.8); /* Darker background for the audio element */
+    filter: brightness(0.9) contrast(1.1); /* Adjusts brightness and contrast for better visibility */
+}
+
+/* Section Styling */
+.section {
+    padding: 60px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: rgba(20, 20, 20, 0.7); /* Semi-transparent sections */
+    border-radius: 10px;
+    margin-bottom: 40px;
+    box-shadow: 0px 0px 20px rgba(0, 255, 221, 0.2);
+    position: relative;
+    z-index: 1;
+    backdrop-filter: blur(10px);
+}
+
+.section h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--neon-pink);
+    text-shadow: 0px 0px 5px var(--neon-pink);
+    position: relative;
+}
+
+.section h2::before, .section h2::after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 2px;
+    background: var(--neon-pink);
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.section h2::before {
+    left: -60px;
+}
+
+.section h2::after {
+    right: -60px;
+}
+
+.section p, .section ul li {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.section ul {
+    list-style: disc inside;
+}
+
+/* Job Experience Section */
+.job {
+    margin-bottom: 30px;
+}
+
+.job h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: var(--neon-cyan);
+    text-shadow: 0px 0px 10px var(--neon-cyan);
+}
+
+.job p {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.job ul li {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* Contact Section */
+#contact p {
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#contact a {
+    color: var(--neon-pink);
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+#contact a:hover {
+    color: var(--highlight);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 50px;
+    color: rgba(255, 255, 255, 0.5);
+    position: relative;
+    z-index: 1;
+}
+
+/* Animation Effects */
+.section {
+    animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
     }
-    isTranslated = !isTranslated;
-});
-
-// Alien Language Toggle
-const alienBtn = document.getElementById('alien-btn');
-let isAlien = false;
-
-alienBtn.addEventListener('click', () => {
-    const texts = document.querySelectorAll('.section p, .section ul li, .header p, footer p, #contact p, .header h1, .job h3, .section h2');
-    if (!isAlien) {
-        texts.forEach(text => {
-            if (!text.dataset.originalTextAlien) {
-                // Store original text before translating
-                text.dataset.originalTextAlien = text.textContent;
-                // Replace text with generated alien text
-                text.textContent = generateAlienText(text.textContent.length);
-                text.classList.add('alien-text');
-            }
-        });
-        alienBtn.textContent = 'Normal Language';
-    } else {
-        texts.forEach(text => {
-            if (text.dataset.originalTextAlien) {
-                // Restore original text
-                text.textContent = text.dataset.originalTextAlien;
-                delete text.dataset.originalTextAlien;
-                text.classList.remove('alien-text');
-            }
-        });
-        alienBtn.textContent = 'Translate to Aliensh';
-    }
-    isAlien = !isAlien;
-});
-
-function generateAlienText(length) {
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%^&*()_+[]{}|;:,.<>?';
-    let alien = '';
-    for (let i = 0; i < length; i++) {
-        alien += chars.charAt(Math.floor(Math.random() * chars.length));
-    }
-    return alien;
-}
-
-// Easter Egg: Typing 'Javier'
-const easterEgg = document.getElementById('easter-egg');
-let inputSequence = '';
-const triggerSequence = 'javier';
-
-window.addEventListener('keydown', (e) => {
-    // Only consider alphabetical keys
-    if (/^[a-zA-Z]$/.test(e.key)) {
-        inputSequence += e.key.toLowerCase();
-        if (inputSequence.endsWith(triggerSequence)) {
-            activateEasterEgg();
-            inputSequence = '';
-        } else if (inputSequence.length > triggerSequence.length) {
-            inputSequence = inputSequence.slice(-triggerSequence.length);
-        }
-    }
-});
-
-function activateEasterEgg() {
-    easterEgg.classList.add('active');
-    // Optionally add additional effects here
-    setTimeout(() => {
-        easterEgg.classList.remove('active');
-    }, 5000); // Easter egg disappears after 5 seconds
-}
-
-// Enhanced Space Background with Dynamic Elements
-const canvas = document.getElementById('space-canvas');
-const ctx = canvas.getContext('2d');
-
-let stars = [];
-let comets = [];
-let planets = [];
-let ships = [];
-
-const numStars = 400; // Increased number of stars
-const numComets = 5;
-const numPlanets = 3;
-const numShips = 2;
-
-// Resize Canvas to Fullscreen
-function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-}
-window.addEventListener('resize', resizeCanvas);
-resizeCanvas();
-
-// Star Constructor
-function Star(x, y, z, size, color, speed) {
-    this.x = x;
-    this.y = y;
-    this.z = z;
-    this.size = size;
-    this.color = color;
-    this.speed = speed;
-}
-
-Star.prototype.update = function() {
-    this.z -= this.speed;
-    if (this.z <= 0) {
-        this.z = canvas.width;
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.color = getRandomStarColor();
-        this.size = Math.random() * 1.5 + 0.5;
-        this.speed = Math.random() * 0.3 + 0.1;
-    }
-}
-
-Star.prototype.draw = function() {
-    let sx = (this.x - canvas.width / 2) / this.z;
-    let sy = (this.y - canvas.height / 2) / this.z;
-    let r = this.size;
-    let px = sx + canvas.width / 2;
-    let py = sy + canvas.height / 2;
-
-    ctx.beginPath();
-    ctx.arc(px, py, r, 0, Math.PI * 2);
-    ctx.fillStyle = this.color;
-    ctx.fill();
-}
-
-// Comet Constructor
-function Comet(x, y, velocityX, velocityY, size, tailLength, color) {
-    this.x = x;
-    this.y = y;
-    this.velocityX = velocityX;
-    this.velocityY = velocityY;
-    this.size = size;
-    this.tailLength = tailLength;
-    this.color = color;
-    this.positions = [];
-}
-
-Comet.prototype.update = function() {
-    this.x += this.velocityX;
-    this.y += this.velocityY;
-
-    // Add current position to the trail
-    this.positions.push({ x: this.x, y: this.y });
-
-    // Limit the trail length
-    if (this.positions.length > this.tailLength) {
-        this.positions.shift();
-    }
-
-    // Reset comet if it goes out of bounds
-    if (this.x > canvas.width + 100 || this.y > canvas.height + 100 || this.x < -100 || this.y < -100) {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height * 0.5; // Start from upper half
-        this.velocityX = Math.random() * 2 + 1;
-        this.velocityY = Math.random() * 2 + 1;
-        this.size = Math.random() * 2 + 1;
-        this.tailLength = Math.random() * 50 + 50;
-        this.positions = [];
-    }
-}
-
-Comet.prototype.draw = function() {
-    // Draw the comet head
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-    ctx.fillStyle = this.color;
-    ctx.fill();
-
-    // Draw the comet tail
-    if (this.positions.length > 1) {
-        ctx.beginPath();
-        ctx.moveTo(this.positions[0].x, this.positions[0].y);
-        for (let i = 1; i < this.positions.length; i++) {
-            ctx.lineTo(this.positions[i].x, this.positions[i].y);
-        }
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
-        ctx.lineWidth = 1;
-        ctx.stroke();
-    }
-}
-
-// Planet Constructor
-function Planet(x, y, radius, orbitRadius, angle, speed, color) {
-    this.x = x;
-    this.y = y;
-    this.radius = radius;
-    this.orbitRadius = orbitRadius;
-    this.angle = angle;
-    this.speed = speed;
-    this.color = color;
-}
-
-Planet.prototype.update = function() {
-    this.angle += this.speed;
-    this.x = canvas.width * 0.75 + this.orbitRadius * Math.cos(this.angle); // Shift orbit center to the right (75% of width)
-    this.y = canvas.height / 2 + this.orbitRadius * Math.sin(this.angle);
-}
-
-Planet.prototype.draw = function() {
-    // Draw orbit path
-    ctx.beginPath();
-    ctx.arc(canvas.width * 0.75, canvas.height / 2, this.orbitRadius, 0, Math.PI * 2);
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
-    ctx.lineWidth = 1;
-    ctx.stroke();
-
-    // Draw planet
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-    ctx.fillStyle = this.color;
-    ctx.fill();
-}
-
-// Spaceship Constructor
-function Spaceship(x, y, velocityX, velocityY, size, color) {
-    this.x = x;
-    this.y = y;
-    this.velocityX = velocityX;
-    this.velocityY = velocityY;
-    this.size = size;
-    this.color = color;
-}
-
-Spaceship.prototype.update = function() {
-    this.x += this.velocityX;
-    this.y += this.velocityY;
-
-    // Reset spaceship if it goes out of bounds
-    if (this.x > canvas.width + 100 || this.y > canvas.height + 100 || this.x < -100 || this.y < -100) {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.velocityX = (Math.random() - 0.5) * 3;
-        this.velocityY = (Math.random() - 0.5) * 3;
-        this.size = Math.random() * 5 + 5;
-        this.color = getRandomShipColor();
-    }
-}
-
-Spaceship.prototype.draw = function() {
-    ctx.save();
-    ctx.translate(this.x, this.y);
-    ctx.rotate(Math.atan2(this.velocityY, this.velocityX));
-
-    // Draw spaceship as a simple triangle
-    ctx.beginPath();
-    ctx.moveTo(this.size, 0);
-    ctx.lineTo(-this.size, this.size / 2);
-    ctx.lineTo(-this.size, -this.size / 2);
-    ctx.closePath();
-    ctx.fillStyle = this.color;
-    ctx.fill();
-
-    ctx.restore();
-}
-
-// Initialize Stars
-function initStars() {
-    stars = [];
-    for (let i = 0; i < numStars; i++) {
-        let x = Math.random() * canvas.width;
-        let y = Math.random() * canvas.height;
-        let z = Math.random() * canvas.width;
-        let size = Math.random() * 1.5 + 0.5;
-        let color = getRandomStarColor();
-        let speed = Math.random() * 0.3 + 0.1;
-        stars.push(new Star(x, y, z, size, color, speed));
+    100% {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
-// Initialize Comets
-function initComets() {
-    comets = [];
-    for (let i = 0; i < numComets; i++) {
-        let x = Math.random() * canvas.width;
-        let y = Math.random() * canvas.height * 0.5; // Start from upper half
-        let velocityX = Math.random() * 2 + 1;
-        let velocityY = Math.random() * 2 + 1;
-        let size = Math.random() * 2 + 1;
-        let tailLength = Math.random() * 50 + 50;
-        let color = '#ffffff';
-        comets.push(new Comet(x, y, velocityX, velocityY, size, tailLength, color));
+.header h1 {
+    animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan), 0 0 30px var(--neon-cyan);
+    }
+    to {
+        text-shadow: 0 0 20px var(--neon-cyan), 0 0 30px var(--neon-cyan), 0 0 40px var(--neon-cyan);
     }
 }
 
-// Initialize Planets
-function initPlanets() {
-    planets = [];
-    const planetColors = ['#ff6347', '#1e90ff', '#32cd32']; // Different colors for planets
-    for (let i = 0; i < numPlanets; i++) {
-        let orbitRadius = Math.random() * (Math.min(canvas.width, canvas.height) / 4) + 50;
-        let radius = Math.random() * 20 + 10;
-        let angle = Math.random() * Math.PI * 2;
-        let speed = Math.random() * 0.001 + 0.0005;
-        let color = planetColors[i % planetColors.length];
-        planets.push(new Planet(canvas.width * 0.75, canvas.height / 2, radius, orbitRadius, angle, speed, color));
+/* Easter Egg Style */
+.hidden-easter-egg {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--neon-pink);
+    font-size: 2rem;
+    background: rgba(0, 0, 0, 0.85);
+    padding: 30px;
+    border: 2px solid var(--neon-pink);
+    border-radius: 15px;
+    text-align: center;
+    z-index: 1000;
+    animation: slideIn 1s forwards;
+}
+
+.hidden-easter-egg.active {
+    display: block;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
     }
 }
 
-// Initialize Spaceships
-function initShips() {
-    ships = [];
-    const shipColors = ['#ff00ff', '#00ffff'];
-    for (let i = 0; i < numShips; i++) {
-        let x = Math.random() * canvas.width;
-        let y = Math.random() * canvas.height;
-        let velocityX = (Math.random() - 0.5) * 3;
-        let velocityY = (Math.random() - 0.5) * 3;
-        let size = Math.random() * 5 + 5;
-        let color = shipColors[i % shipColors.length];
-        ships.push(new Spaceship(x, y, velocityX, velocityY, size, color));
-    }
+.easter-egg-image {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    margin-top: 20px;
+    border-radius: 10px;
 }
 
-function getRandomStarColor() {
-    const colors = ['#ffffff', '#ffe700', '#ffcc00', '#00ffff', '#ff00ff'];
-    return colors[Math.floor(Math.random() * colors.length)];
+/* Buttons for Translation and Alien Language */
+button#translate-btn, button#alien-btn {
+    background-color: transparent;
+    border: 2px solid var(--neon-pink);
+    color: var(--neon-pink);
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
 }
 
-function getRandomShipColor() {
-    const colors = ['#ff00ff', '#00ffff', '#ff007a'];
-    return colors[Math.floor(Math.random() * colors.length)];
+button#translate-btn:hover, button#alien-btn:hover {
+    background-color: var(--neon-pink);
+    color: #000;
+    transform: scale(1.05);
 }
 
-// Draw Everything
-function draw() {
-    // Clear the canvas with a semi-transparent fill for motion blur
-    ctx.fillStyle = 'rgba(10, 10, 30, 0.3)'; // Dark blue tint with opacity
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    // Draw and update stars
-    stars.forEach(star => {
-        star.update();
-        star.draw();
-    });
-
-    // Draw and update comets
-    comets.forEach(comet => {
-        comet.update();
-        comet.draw();
-    });
-
-    // Draw and update planets
-    planets.forEach(planet => {
-        planet.update();
-        planet.draw();
-    });
-
-    // Draw and update spaceships
-    ships.forEach(ship => {
-        ship.update();
-        ship.draw();
-    });
-
-    requestAnimationFrame(draw);
+/* Alien Language Toggle */
+.alien-text {
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 2px;
 }
-
-// Initialize All Elements
-initStars();
-initComets();
-initPlanets();
-initShips();
-draw();
-
-// Prevent alien language buttons from translating the buttons themselves
-const buttons = document.querySelectorAll('button');
-buttons.forEach(button => {
-    button.addEventListener('click', (e) => {
-        e.stopPropagation();
-    });
-});
