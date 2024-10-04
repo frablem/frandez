@@ -84,6 +84,7 @@ canvas#space-canvas {
     color: var(--neon-pink);
     position: relative;
     transition: color 0.3s;
+    text-decoration: none;
 }
 
 .header nav ul li a::after {
@@ -240,6 +241,7 @@ canvas#space-canvas {
     color: var(--neon-pink);
     font-weight: bold;
     transition: color 0.3s;
+    text-decoration: none;
 }
 
 #contact a:hover {
@@ -350,4 +352,120 @@ button#translate-btn:hover, button#alien-btn:hover {
 .alien-text {
     font-family: 'Montserrat', sans-serif;
     letter-spacing: 2px;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    /* Adjust padding and layout for smaller screens */
+    .header {
+        padding: 30px 15px;
+    }
+
+    .header h1 {
+        font-size: 2.5rem;
+    }
+
+    .header p {
+        font-size: 1rem;
+    }
+
+    .header nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .header nav ul li {
+        margin: 10px 0;
+    }
+
+    .buttons button {
+        padding: 8px 16px;
+        margin: 5px;
+        font-size: 0.9rem;
+    }
+
+    .audio-player {
+        width: 100%;
+        max-width: none;
+    }
+
+    .audio-player audio {
+        max-width: 100%;
+    }
+
+    .section {
+        padding: 40px 15px;
+    }
+
+    .section h2 {
+        font-size: 2rem;
+    }
+
+    .job h3 {
+        font-size: 1.5rem;
+    }
+
+    .section p, .section ul li {
+        font-size: 1rem;
+    }
+
+    #contact p {
+        font-size: 1rem;
+    }
+
+    footer {
+        padding: 15px;
+        font-size: 0.9rem;
+    }
+
+    .hidden-easter-egg {
+        width: 90%;
+        padding: 20px;
+        font-size: 1.5rem;
+    }
+
+    .easter-egg-image {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Further adjustments for very small screens */
+    .header h1 {
+        font-size: 2rem;
+    }
+
+    .header p {
+        font-size: 0.9rem;
+    }
+
+    .buttons button {
+        padding: 6px 12px;
+        margin: 5px 0;
+        font-size: 0.8rem;
+    }
+
+    .section h2 {
+        font-size: 1.8rem;
+    }
+
+    .job h3 {
+        font-size: 1.3rem;
+    }
+
+    .section p, .section ul li {
+        font-size: 0.9rem;
+    }
+
+    #contact p {
+        font-size: 0.9rem;
+    }
+
+    footer {
+        font-size: 0.8rem;
+    }
+
+    .hidden-easter-egg {
+        font-size: 1.2rem;
+    }
 }
