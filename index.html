@@ -5,179 +5,170 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Francisco Fernandez - Space Resume</title>
     <link rel="stylesheet" href="styles.css"> <!-- Link to CSS file for styling -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet"> <!-- Updated Fonts -->
 </head>
 <body>
-    <!-- Space background -->
+    <!-- Space background with enhanced elements -->
     <div class="space-background">
+        <!-- Canvas for dynamic space elements -->
+        <canvas id="space-canvas"></canvas>
+
         <!-- Header section -->
         <header class="header">
-            <h1>Francisco Fernandez</h1>
-            <p>Project Manager & E-commerce Specialist</p>
+            <h1 data-english="Francisco Fernandez" data-spanish="Francisco Fernández">Francisco Fernandez</h1>
+            <p data-english="Project Manager & E-commerce Specialist" data-spanish="Project Manager & Especialista en E-commerce">Project Manager & E-commerce Specialist</p>
             <nav>
                 <ul>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#education">Education</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#about" data-english="About" data-spanish="Acerca de">About</a></li>
+                    <li><a href="#experience" data-english="Experience" data-spanish="Experiencia">Experience</a></li>
+                    <li><a href="#skills" data-english="Skills" data-spanish="Habilidades">Skills</a></li>
+                    <li><a href="#education" data-english="Education" data-spanish="Educación">Education</a></li>
+                    <li><a href="#contact" data-english="Contact" data-spanish="Contacto">Contact</a></li>
                 </ul>
             </nav>
+            <div class="buttons">
+                <button id="translate-btn">Translate to Spanish</button>
+                <button id="alien-btn">Translate to Aliensh</button>
+            </div>
+            <!-- Audio Player Section -->
+            <div class="audio-player">
+                <p data-english='PodcAIst #06: "Fran!"' data-spanish='PodcAIst #06: "¡Fran!"'>PodcAIst #06: "Fran!"</p>
+                <audio controls>
+                    <source src="podcast.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
         </header>
 
         <!-- About section -->
         <section id="about" class="section">
-            <h2>About Me</h2>
-            <p>Venezuelan | Santiago, Chile (Permanent Resident)</p>
-            <p>Dedicated Project Manager and E-commerce Specialist with over 6 years of experience in managing and executing projects on Shopify and Webflow platforms. Fluent in English and Spanish with basic proficiency in French.</p>
+            <h2 data-english="About Me" data-spanish="Acerca de Mí">About Me</h2>
+            <p data-english="Venezuelan | Santiago, Chile (Permanent Resident)" data-spanish="Venezolano | Santiago, Chile (Residente Permanente)">Venezuelan | Santiago, Chile (Permanent Resident)</p>
+            <p data-english="Dedicated Project Manager and E-commerce Specialist with over 6 years of experience in managing and executing projects on Shopify and Webflow platforms. Fluent in English and Spanish with basic proficiency in French." data-spanish="Soy un Project Manager y Especialista en E-commerce dedicado con más de 6 años de experiencia en la gestión y ejecución de proyectos en plataformas Shopify y Webflow. Bilingüe en inglés y español, con competencia básica en francés.">Dedicated Project Manager and E-commerce Specialist with over 6 years of experience in managing and executing projects on Shopify and Webflow platforms. Fluent in English and Spanish with basic proficiency in French.</p>
         </section>
 
         <!-- Experience section -->
         <section id="experience" class="section">
-            <h2>Professional Experience</h2>
+            <h2 data-english="Professional Experience" data-spanish="Experiencia Profesional">Professional Experience</h2>
 
             <!-- Lobo Creaciones -->
             <div class="job">
-                <h3>Lobo Creaciones - Project Manager</h3>
+                <h3 data-english="Lobo Creaciones - Project Manager" data-spanish="Lobo Creaciones - Project Manager">Lobo Creaciones - Project Manager</h3>
                 <p><strong>January 2024 – Present</strong></p>
                 <ul>
-                    <li>Manage e-commerce projects for clients at a Shopify Plus partner agency.</li>
-                    <li>Oversee developers and project assistants to ensure successful project execution.</li>
-                    <li>Collaborate with high-profile clients like Lush, Apple, and Bose.</li>
+                    <li data-english="Manage e-commerce projects for clients at a Shopify Plus partner agency." data-spanish="Gestionar proyectos de e-commerce para clientes en una agencia asociada a Shopify Plus.">Manage e-commerce projects for clients at a Shopify Plus partner agency.</li>
+                    <li data-english="Oversee developers and project assistants to ensure successful project execution." data-spanish="Supervisar a desarrolladores y asistentes de proyecto para asegurar la ejecución exitosa de los proyectos.">Oversee developers and project assistants to ensure successful project execution.</li>
+                    <li data-english="Create and improve workflows to enhance efficiency and productivity." data-spanish="Crear y mejorar flujos de trabajo para aumentar la eficiencia y productividad.">Create and improve workflows to enhance efficiency and productivity.</li>
+                    <li data-english="Research and implement new tools and automations to streamline operations." data-spanish="Investigar e implementar nuevas herramientas y automatizaciones para optimizar operaciones.">Research and implement new tools and automations to streamline operations.</li>
+                    <li data-english="Utilize ClickUp extensively for project management and team collaboration." data-spanish="Utilizar ClickUp de manera extensiva para la gestión de proyectos y la colaboración del equipo.">Utilize ClickUp extensively for project management and team collaboration.</li>
+                    <li data-english='Collaborate with high-profile clients such as Lush, Apple, and Bose.' data-spanish='Colaborar con clientes de alto perfil como Lush, Apple y Bose.'>Collaborate with high-profile clients such as Lush, Apple, and Bose.</li>
                 </ul>
             </div>
 
             <!-- Colored Byte -->
             <div class="job">
-                <h3>Colored Byte - Developer > Lead Project Manager > Head of Delivery</h3>
+                <h3 data-english="Colored Byte - Developer > Lead Project Manager > Head of Delivery - Web Development" data-spanish="Colored Byte - Desarrollador > Project Manager Líder > Jefe de Entrega - Desarrollo Web">Colored Byte - Developer > Lead Project Manager > Head of Delivery - Web Development</h3>
                 <p><strong>June 2020 – December 2023</strong></p>
                 <ul>
-                    <li>Performed front-end and back-end development for Shopify projects.</li>
-                    <li>Led project management teams and coordinated design and development departments.</li>
-                    <li>Hosted monthly meetings to improve workflows and processes.</li>
+                    <li data-english="Developer: Performed front-end and back-end Shopify development, including theme customizations and app integrations." data-spanish="Desarrollador: Realicé desarrollo front-end y back-end en Shopify, incluyendo personalizaciones de temas e integraciones de aplicaciones.">Developer: Performed front-end and back-end Shopify development, including theme customizations and app integrations.</li>
+                    <li data-english="Project Manager: Managed small to large-scale design and development projects on Shopify and Webflow platforms." data-spanish="Project Manager: Gestioné proyectos de diseño y desarrollo de pequeña a gran escala en plataformas Shopify y Webflow.">Project Manager: Managed small to large-scale design and development projects on Shopify and Webflow platforms.</li>
+                    <li data-english="Lead Project Manager: Led project management teams and coordinated between design and development departments." data-spanish="Project Manager Líder: Dirigí equipos de gestión de proyectos y coordiné entre los departamentos de diseño y desarrollo.">Lead Project Manager: Led project management teams and coordinated between design and development departments.</li>
+                    <li data-english='Head of Delivery - Web Dev: Developed and implemented processes based on team feedback; collaborated directly with founders/CEO.' data-spanish='Jefe de Entrega - Desarrollo Web: Desarrollé e implementé procesos basados en la retroalimentación del equipo; colaboré directamente con los fundadores/CEO.'>Head of Delivery - Web Dev: Developed and implemented processes based on team feedback; collaborated directly with founders/CEO.</li>
+                    <li data-english="Hosted monthly meetings to discuss process updates and improvements across design, development, and email marketing teams." data-spanish="Organizaba reuniones mensuales para discutir actualizaciones de procesos y mejoras en los equipos de diseño, desarrollo y marketing por correo electrónico.">Hosted monthly meetings to discuss process updates and improvements across design, development, and email marketing teams.</li>
+                    <li data-english="Implemented tools like Harvest, Airtable, and Basecamp to optimize project management." data-spanish="Implementé herramientas como Harvest, Airtable y Basecamp para optimizar la gestión de proyectos.">Implemented tools like Harvest, Airtable, and Basecamp to optimize project management.</li>
                 </ul>
             </div>
 
             <!-- Miracle Brand -->
             <div class="job">
-                <h3>Miracle Brand - Customer Service Manager</h3>
+                <h3 data-english="Miracle Brand - Customer Service Manager" data-spanish="Miracle Brand - Gerente de Servicio al Cliente">Miracle Brand - Customer Service Manager</h3>
                 <p><strong>July 2020 – October 2020</strong></p>
                 <ul>
-                    <li>Led email, chat, phone, and social media customer service departments.</li>
-                    <li>Created KPIs and tracking methods for efficient staff management.</li>
+                    <li data-english="Led email, chat, phone, and social media customer service departments." data-spanish="Lideré los departamentos de servicio al cliente por correo electrónico, chat, teléfono y redes sociales.">Led email, chat, phone, and social media customer service departments.</li>
+                    <li data-english="Implemented systems and integrations to improve customer support efficiency." data-spanish="Implementé sistemas e integraciones para mejorar la eficiencia del soporte al cliente.">Implemented systems and integrations to improve customer support efficiency.</li>
+                    <li data-english="Created KPIs and established effective staff tracking methods." data-spanish="Creé KPIs y establecí métodos efectivos de seguimiento del personal.">Created KPIs and established effective staff tracking methods.</li>
                 </ul>
             </div>
 
             <!-- Northwestern Brands -->
             <div class="job">
-                <h3>Northwestern Brands - Various Roles</h3>
+                <h3 data-english="Northwestern Brands - Customer Support Agent > Head of Customer Support > Head of Administrative Team" data-spanish="Northwestern Brands - Agente de Soporte al Cliente > Jefe de Soporte al Cliente > Jefe de Equipo Administrativo">Northwestern Brands - Customer Support Agent > Head of Customer Support > Head of Administrative Team</h3>
                 <p><strong>January 2018 – June 2020</strong></p>
                 <ul>
-                    <li>Customer Support Agent, Head of Customer Support, Head of Administrative Team.</li>
-                    <li>Handled customer inquiries, disputes, and Shopify store management.</li>
+                    <li data-english="Customer Support Agent: Handled customer inquiries using platforms like Reamaze, Gorgias, Zendesk, and Helpscout." data-spanish="Agente de Soporte al Cliente: Manejo de consultas de clientes utilizando plataformas como Reamaze, Gorgias, Zendesk y Helpscout.">Customer Support Agent: Handled customer inquiries using platforms like Reamaze, Gorgias, Zendesk, and Helpscout.</li>
+                    <li data-english="Processed discounts, order changes, and tracking updates on Shopify." data-spanish="Procesé descuentos, cambios de pedidos y actualizaciones de seguimiento en Shopify.">Processed discounts, order changes, and tracking updates on Shopify.</li>
+                    <li data-english="Fulfillment Agent: Managed apps like Easy Reports and Dropified; coordinated with suppliers and updated orders." data-spanish="Agente de Cumplimiento: Gestioné aplicaciones como Easy Reports y Dropified; coordiné con proveedores y actualicé pedidos.">Fulfillment Agent: Managed apps like Easy Reports and Dropified; coordinated with suppliers and updated orders.</li>
+                    <li data-english="Head of Customer Support: Supervised staff, monitored KPIs, and generated reports using Google Sheets and Docs." data-spanish="Jefe de Soporte al Cliente: Supervisé al personal, monitoreé KPIs y generé informes utilizando Google Sheets y Docs.">Head of Customer Support: Supervised staff, monitored KPIs, and generated reports using Google Sheets and Docs.</li>
+                    <li data-english="Head of Admin: Oversaw fulfillment, customer support, and dispute resolution teams." data-spanish="Jefe de Administración: Supervisé los equipos de cumplimiento, soporte al cliente y resolución de disputas.">Head of Admin: Oversaw fulfillment, customer support, and dispute resolution teams.</li>
+                    <li data-english="Developed Shopify stores and managed payment disputes on PayPal and Stripe." data-spanish="Desarrollé tiendas en Shopify y gestioné disputas de pagos en PayPal y Stripe.">Developed Shopify stores and managed payment disputes on PayPal and Stripe.</li>
+                    <li data-english="Launched Facebook Ads campaigns and set up Google Analytics accounts." data-spanish="Lancé campañas de Facebook Ads y configuré cuentas de Google Analytics.">Launched Facebook Ads campaigns and set up Google Analytics accounts.</li>
+                    <li data-english="Configured domains and DNS settings for Google Suite and Shopify." data-spanish="Configuré dominios y ajustes de DNS para Google Suite y Shopify.">Configured domains and DNS settings for Google Suite and Shopify.</li>
+                    <li data-english="Created automations using Zapier." data-spanish="Creé automatizaciones utilizando Zapier.">Created automations using Zapier.</li>
                 </ul>
             </div>
         </section>
 
         <!-- Skills section -->
         <section id="skills" class="section">
-            <h2>Skills</h2>
+            <h2 data-english="Skills" data-spanish="Habilidades">Skills</h2>
             <ul>
-                <li>Languages: Fluent in English and Spanish, basic French proficiency.</li>
-                <li>Project Management Tools: ClickUp, Asana, Basecamp, Airtable.</li>
-                <li>E-commerce Platforms: Shopify, Webflow.</li>
-                <li>Automation Tools: Zapier.</li>
-                <li>Email Marketing: Klaviyo.</li>
-                <li>Customer Support: Reamaze, Gorgias, Zendesk, Helpscout.</li>
-                <li>Analytics: Google Analytics, Facebook Ads.</li>
-                <li>Productivity Tools: Google Suite, Microsoft Office.</li>
+                <li data-english="Languages: Fluent in English and Spanish, basic French proficiency." data-spanish="Idiomas: Español nativo, Inglés fluido, Francés con competencia básica.">Languages: Fluent in English and Spanish, basic French proficiency.</li>
+                <li data-english="Project Management Tools: ClickUp, Asana, Basecamp, Airtable." data-spanish="Herramientas de Gestión de Proyectos: ClickUp, Asana, Basecamp, Airtable.">Project Management Tools: ClickUp, Asana, Basecamp, Airtable.</li>
+                <li data-english="E-commerce Platforms: Shopify (development, apps, product management), Webflow." data-spanish="Plataformas de E-commerce: Shopify (desarrollo, aplicaciones, gestión de productos), Webflow.">E-commerce Platforms: Shopify (development, apps, product management), Webflow.</li>
+                <li data-english="Automation Tools: Zapier." data-spanish="Herramientas de Automatización: Zapier.">Automation Tools: Zapier.</li>
+                <li data-english="Email Marketing: Klaviyo." data-spanish="Marketing por Correo Electrónico: Klaviyo.">Email Marketing: Klaviyo.</li>
+                <li data-english="Customer Support Platforms: Reamaze, Gorgias, Zendesk, Helpscout." data-spanish="Plataformas de Soporte al Cliente: Reamaze, Gorgias, Zendesk, Helpscout.">Customer Support Platforms: Reamaze, Gorgias, Zendesk, Helpscout.</li>
+                <li data-english="Analytics: Google Analytics." data-spanish="Analítica: Google Analytics.">Analytics: Google Analytics.</li>
+                <li data-english="Advertising Platforms: Facebook Ads." data-spanish="Plataformas de Publicidad: Facebook Ads.">Advertising Platforms: Facebook Ads.</li>
+                <li data-english="Productivity Tools: Google Suite, Microsoft Office." data-spanish="Herramientas de Productividad: Google Suite, Microsoft Office.">Productivity Tools: Google Suite, Microsoft Office.</li>
+                <li data-english="Time Tracking Software: Harvest, Toggl, Clockify." data-spanish="Software de Seguimiento de Tiempo: Harvest, Toggl, Clockify.">Time Tracking Software: Harvest, Toggl, Clockify.</li>
+                <li data-english="Development Skills: Front-end and back-end coding, theme customization." data-spanish="Habilidades de Desarrollo: Codificación front-end y back-end, personalización de temas.">Development Skills: Front-end and back-end coding, theme customization.</li>
+                <li data-english="Other Skills: Supplier handling, product sourcing, translations, localization, proofreading, English teaching." data-spanish="Otras Habilidades: Manejo de proveedores, sourcing de productos, traducciones, localización, corrección de pruebas, enseñanza de inglés.">Other Skills: Supplier handling, product sourcing, translations, localization, proofreading, English teaching.</li>
             </ul>
         </section>
 
         <!-- Education section -->
         <section id="education" class="section">
-            <h2>Education</h2>
+            <h2 data-english="Education" data-spanish="Educación">Education</h2>
             <ul>
-                <li>High School Diploma - U.E Andrés Eloy Blanco, July 2013</li>
-                <li>Technician in Prehospital Emergencies - April 2014</li>
-                <li>Biology (3 semesters) - Universidad del Zulia</li>
-                <li>Mechanical Engineering (1 semester) - Universidad del Zulia</li>
+                <li data-english="High School Diploma - U.E Andrés Eloy Blanco, July 2013" data-spanish="Diploma de Bachillerato - U.E Andrés Eloy Blanco, Julio 2013">High School Diploma - U.E Andrés Eloy Blanco, July 2013</li>
+                <li data-english="Courses" data-spanish="Cursos">
+                    <ul>
+                        <li data-english="Basic Computer Technician - Completed March 2012" data-spanish="Técnico Básico en Informática - Completado en Marzo 2012">Basic Computer Technician - Completed March 2012</li>
+                        <li data-english="Advanced English Course for Adults - Completed October 2013" data-spanish="Curso Avanzado de Inglés para Adultos - Completado en Octubre 2013">Advanced English Course for Adults - Completed October 2013</li>
+                        <li data-english="Technician in Prehospital Emergencies - Completed April 2014" data-spanish="Técnico en Emergencias Prehospitalarias - Completado en Abril 2014">Technician in Prehospital Emergencies - Completed April 2014</li>
+                    </ul>
+                </li>
+                <li data-english="University Studies" data-spanish="Estudios Universitarios">
+                    <ul>
+                        <li data-english="Biology - Universidad del Zulia, Three semesters completed" data-spanish="Biología - Universidad del Zulia, Tres semestres completados">Biology - Universidad del Zulia, Three semesters completed</li>
+                        <li data-english="Mechanical Engineering - Universidad del Zulia, One semester completed" data-spanish="Ingeniería Mecánica - Universidad del Zulia, Un semestre completado">Mechanical Engineering - Universidad del Zulia, One semester completed</li>
+                    </ul>
+                </li>
             </ul>
         </section>
 
         <!-- Contact section -->
         <section id="contact" class="section">
-            <h2>Contact Me</h2>
-            <p><strong>Email:</strong> <a href="mailto:contact@frandez.com">contact@frandez.com</a></p>
-            <p><strong>Phone:</strong> <a href="tel:+56942570347">+56 9 4257 0347</a></p>
-            <p><strong>Website:</strong> <a href="http://www.frandez.com" target="_blank">www.frandez.com</a></p>
+            <h2 data-english="Contact Me" data-spanish="Contacto">Contact Me</h2>
+            <p><strong data-english="Email:" data-spanish="Correo Electrónico:">Email:</strong> <a href="mailto:contact@frandez.com" data-english="contact@frandez.com" data-spanish="contact@frandez.com">contact@frandez.com</a></p>
+            <p><strong data-english="Phone:" data-spanish="Teléfono:">Phone:</strong> <a href="tel:+56942570347" data-english="+56 9 4257 0347" data-spanish="+56 9 4257 0347">+56 9 4257 0347</a></p>
+            <p><strong data-english="Website:" data-spanish="Sitio Web:">Website:</strong> <a href="http://www.frandez.com" target="_blank" data-english="www.frandez.com" data-spanish="www.frandez.com">www.frandez.com</a></p>
         </section>
 
         <!-- Footer -->
         <footer>
-            <p>&copy; 2024 Francisco Fernandez - Space Resume</p>
+            <p data-english="&copy; 2024 Francisco Fernandez - Space Resume" data-spanish="&copy; 2024 Francisco Fernández - Currículum Espacial">&copy; 2024 Francisco Fernandez - Space Resume</p>
         </footer>
 
-        <!-- Hidden Easter Egg (triggered by Konami Code) -->
-        <div class="hidden-easter-egg">You've unlocked a secret message! 🚀</div>
-
+        <!-- Hidden Easter Egg -->
+        <div class="hidden-easter-egg" id="easter-egg">
+            <p data-english='Javier says hi! 🐶' data-spanish='Javier dice ¡hola! 🐶'>Javier says hi! 🐶</p>
+            <img src="Javier.webp" alt="Javier" class="easter-egg-image">
+        </div>
     </div> <!-- End of .space-background -->
 
-    <script>
-    // Smooth Scrolling for Navigation Links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
-    });
-
-    // Easter Egg Reveal - Activate with a Secret Key Combo (Konami Code!)
-    const secretCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
-    let keySequence = [];
-
-    window.addEventListener('keydown', (e) => {
-        keySequence.push(e.key);
-        keySequence.splice(-secretCode.length - 1, keySequence.length - secretCode.length);
-
-        if (keySequence.join('') === secretCode.join('')) {
-            // Trigger Easter Egg!
-            const easterEgg = document.querySelector('.hidden-easter-egg');
-            easterEgg.classList.add('active');
-            setTimeout(() => {
-                easterEgg.classList.remove('active');
-            }, 5000); // Easter egg will disappear after 5 seconds
-        }
-    });
-
-    // Random Star Generation for Background (To make it feel more alive!)
-    function createStar() {
-        const star = document.createElement('div');
-        star.classList.add('star');
-        star.style.left = Math.random() * 100 + 'vw';
-        star.style.top = Math.random() * 100 + 'vh';
-        star.style.width = star.style.height = Math.random() * 3 + 'px';
-        star.style.animationDuration = Math.random() * 3 + 2 + 's'; // Random twinkle duration
-        document.body.appendChild(star);
-
-        // Remove star after animation ends
-        setTimeout(() => {
-            star.remove();
-        }, 5000);
-    }
-
-    // Create multiple stars
-    setInterval(createStar, 150);
-
-    // Cosmic Sound Effect on Section Click
-    const sections = document.querySelectorAll('.section');
-    sections.forEach(section => {
-        section.addEventListener('click', () => {
-            const cosmicSound = new Audio('cosmic-sound.mp3'); // Add your sound file here
-            cosmicSound.play();
-        });
-    });
-    </script> <!-- Link to JS file for future interactions -->
+    <!-- JavaScript -->
+    <script src="script.js"></script>
 </body>
 </html>
